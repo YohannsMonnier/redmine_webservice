@@ -1,0 +1,16 @@
+*****************************************************
+*                                                   *
+* Redmine Webservice - Yohann Monnier - Internethic  *
+*													*
+*****************************************************
+
+Redmine Webservice is a redmine plugin that provides a webservice for Redmine.
+
+It was originally based on eclipse_mylyn_connector. It remains the structure and the architecture of the original plugin.
+
+
+Internethic is an SSLL(Open Source Software Service Company) located in Marseille, France.
+http://www.internethic.com
+
+
+Copyright (c) 2009 Yohann Monnier - Internethic, released under the MIT license
