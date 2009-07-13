@@ -164,13 +164,13 @@ class IssueService < BaseService
   
   def find_issue_for_project projectid
     issues = Issue.find(:all, :conditions => ["project_id = ? ", @project.id])
-    issues.collect! {|x|IssueDto.create(x)}
+    issues.collect! {|x|complete_dto(x, IssueDto.create(x))}
     return issues
   end
 
   def find_issue_for_project2 projectidentifier
     issues = Issue.find(:all, :conditions => ["project_id = ? ", @project.id])
-    issues.collect! {|x|IssueDto.create(x)}
+    issues.collect! {|x|complete_dto(x, IssueDto.create(x))}
     return issues
   end
   
@@ -196,9 +196,21 @@ class IssueService < BaseService
   def add_time_entry_for_ticket(task_id, user_identifier, spent_time, comments)
   	# retrieve user
   	worker_user = User.find_by_login(user_identifier)
+  	# retrieve the default activity
+  	act_enumerations = Enumeration::get_values('ACTI')
+  	activity_to_assign = act_enumerations.first
+	act_enumerations.each do |activity|
+		if activity.is_default == true
+			# la méthode tostring de l'objet enumération retourne le nom de l'objet
+			activity_to_assign = activity
+		end
+	end
+
+
+  	
   	# add a	Time Entry for this issue
   	time_entry = TimeEntry.new(:project => @project, :issue => @issue, :user => worker_user, :spent_on => Date.today)
-  	time_entry.attributes = {:hours => spent_time, :comments => comments, :activity_id => Enumeration.get_values('ACTI').first }
+  	time_entry.attributes = {:hours => spent_time, :comments => comments, :activity_id => activity_to_assign.id }
   	# save the time entry
   	if time_entry.valid?
   		time_entry.save
@@ -337,10 +349,17 @@ class IssueService < BaseService
    if project
     	dto.project_name = project.name
     end
+
     enumerations = Enumeration::get_values('IPRI')
-    dto.priority = enumerations[issue.priority_id]
-
-
+	# on retrouve la bonne priorité et on l'enregistre
+	dto.priority = ""
+	enumerations.each do |priorite|
+		if priorite.id == issue.priority_id
+			# la méthode tostring de l'objet enumération retourne le nom de l'objet
+			dto.priority = priorite.to_s()
+		end
+	end
+	
     relations = issue.relations
     relations.collect! {|x|IssueRelationDto.create(x)}
     dto.all_relations = relations.compact
