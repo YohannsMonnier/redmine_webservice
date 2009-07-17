@@ -206,8 +206,6 @@ class IssueService < BaseService
 		end
 	end
 
-
-  	
   	# add a	Time Entry for this issue
   	time_entry = TimeEntry.new(:project => @project, :issue => @issue, :user => worker_user, :spent_on => Date.today)
   	time_entry.attributes = {:hours => spent_time, :comments => comments, :activity_id => activity_to_assign.id }
@@ -215,6 +213,27 @@ class IssueService < BaseService
   	if time_entry.valid?
   		time_entry.save
   	end
+  	
+  	# prepare comment
+	notes = comments
+	journal = @issue.init_journal(worker_user, comments)
+	## Recording the issue
+	@issue.save
+	
+    dto = IssueDto.create(@issue)
+    complete_dto(@issue, dto)
+    return dto
+  end
+  
+  def add_comment_for_ticket(task_id, user_identifier, comments)
+  	# retrieve user
+  	worker_user = User.find_by_login(user_identifier)
+	# prepare comment
+	notes = comments
+	journal = @issue.init_journal(worker_user, comments)
+	## Recording the issue
+	@issue.save
+	
     dto = IssueDto.create(@issue)
     complete_dto(@issue, dto)
     return dto

@@ -59,6 +59,10 @@ class IssueApi < ActionWebService::API::Base
     :expects => [:int, :string, :string, :string],
     :returns => [IssueDto]
     
+  api_method :add_comment_for_ticket,
+    :expects => [:int, :string, :string],
+    :returns => [IssueDto]
+        
   api_method :find_issue_for_project2,
     :expects => [:string],
     :returns => [[IssueDto]]
