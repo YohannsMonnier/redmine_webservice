@@ -193,7 +193,7 @@ class IssueService < BaseService
     return dto
   end
   
-  def add_time_entry_for_ticket(task_id, user_identifier, spent_time, comments)
+  def add_time_entry_for_ticket(task_id, user_identifier, spent_time, comments, write_comment)
   	# retrieve user
   	worker_user = User.find_by_login(user_identifier)
   	# retrieve the default activity
@@ -215,10 +215,14 @@ class IssueService < BaseService
   	end
   	
   	# prepare comment
-	notes = comments
-	journal = @issue.init_journal(worker_user, comments)
+  	if ( write_comment == 1 )
+		notes = comments
+		journal = @issue.init_journal(worker_user, comments)
+	end
+	
 	## Recording the issue
 	@issue.save
+
 	
     dto = IssueDto.create(@issue)
     complete_dto(@issue, dto)

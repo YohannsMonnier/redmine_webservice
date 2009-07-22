@@ -56,7 +56,7 @@ class IssueApi < ActionWebService::API::Base
     :returns => [[IssueDto]]
     
   api_method :add_time_entry_for_ticket,
-    :expects => [:int, :string, :string, :string],
+    :expects => [:int, :string, :string, :string, :int],
     :returns => [IssueDto]
     
   api_method :add_comment_for_ticket,
