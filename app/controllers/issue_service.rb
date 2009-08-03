@@ -215,13 +215,13 @@ class IssueService < BaseService
   	end
   	
   	# prepare comment
-  	if ( write_comment == 1 )
-		notes = comments
-		journal = @issue.init_journal(worker_user, comments)
-	end
+  	#if ( write_comment == 1 )
+	#	notes = comments
+	#	journal = @issue.init_journal(worker_user, comments)
+	#end
 	
 	## Recording the issue
-	@issue.save
+	#@issue.save
 
 	
     dto = IssueDto.create(@issue)
