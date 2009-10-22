@@ -13,7 +13,7 @@ class ProjectApi < ActionWebService::API::Base
     :returns => [[ProjectDto]]
  
    api_method :find_one_project,
-    :expects => [:int],
+    :expects => [:string],
     :returns => [ProjectDto]
       
   api_method :create_one_project,

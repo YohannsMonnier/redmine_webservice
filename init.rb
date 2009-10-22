@@ -8,5 +8,5 @@ Redmine::Plugin.register :redmine_webservice do
   author 'Yohann Monnier - Internethic'
   description 'This plugin implements a webservice API in Redmine'
   url 'http://github.com/YohannsMonnier/redmine_webservice/'
-  version '0.0.3'
+  version '0.0.4'
 end

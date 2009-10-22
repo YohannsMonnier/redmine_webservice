@@ -8,6 +8,10 @@ Redmine Webservice is a redmine plugin that provides a webservice for Redmine.
 
 It was originally based on eclipse_mylyn_connector. It remains the structure and the architecture of the original plugin.
 
+To install it : drop the folder in vendor/plugins
+
+To test it : go to http://YourRedmineUrl/invoke_frontend/invoke
+
 
 Internethic is an SSLL(Open Source Software Service Company) located in Marseille, France.
 http://www.internethic.com

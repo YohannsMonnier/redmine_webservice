@@ -49,5 +49,5 @@ class BaseService < ActionWebService::Base
 		#    rescue false
 	return true
   end
-  
+
 end
