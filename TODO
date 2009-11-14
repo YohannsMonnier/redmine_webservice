@@ -4,11 +4,15 @@
 *													*
 *****************************************************
 
---- Version 0.3 ---
+--- Version 0.0.3 ---
 
 * Authentification des utilisateurs
 * Gestion des droits
 
---- Version 0.4 --- 
+--- Version 0.0.4 --- 
 
-*  ???
+* Refactor for by logged user queries.
+
+--- Version 0.0.5 ---
+
+* Add "modification date" on project_dto Struct
