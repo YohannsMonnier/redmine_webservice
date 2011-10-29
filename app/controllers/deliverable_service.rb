@@ -19,7 +19,7 @@ class DeliverableService < BaseService
      @project = @deliverable.project
    end
   end
-  
+
   def find_deliverable_by_id id
   	dto = DeliverableDto.create(@deliverable)
 
@@ -36,13 +36,13 @@ class DeliverableService < BaseService
 	deliverable.project = @project
 	# Save the deliverable
 	deliverable.save
-		
+
 	dto = DeliverableDto.create(deliverable)
 
     return dto
   end
-  
-  def update_deliverable_for_project (id_deliverable, deliverable_subject, deliverable_fixed_cost) 
+
+  def update_deliverable_for_project (id_deliverable, deliverable_subject, deliverable_fixed_cost)
 
 	# setting the subject
 	@deliverable.subject = deliverable_subject
@@ -50,18 +50,18 @@ class DeliverableService < BaseService
 	@deliverable.fixed_cost = deliverable_fixed_cost
 	# Save the deliverable
 	@deliverable.save
-		
+
     dto = DeliverableDto.create(@deliverable)
 
     return dto
   end
-  
+
   def delete_deliverable_for_project id
     dto = DeliverableDto.create(@deliverable)
 
     return dto
   end
-  
+
   def find_deliverables_for_project project_identifier
   	if @project
   		id_project = @project.id
@@ -72,5 +72,5 @@ class DeliverableService < BaseService
     deliverables.collect! {|x|DeliverableDto.create(x)}
     return deliverables.compact
   end
-  
+
 end

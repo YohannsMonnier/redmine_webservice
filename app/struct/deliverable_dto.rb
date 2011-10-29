@@ -5,9 +5,9 @@ class DeliverableDto < ActionWebService::Struct
   member :subject, :string
   member :fixed_cost, :string
 
-  
+
   def self.create deliverable
-    
+
     return DeliverableDto.new(
       :id => deliverable.id,
       :project_id => deliverable.project_id,

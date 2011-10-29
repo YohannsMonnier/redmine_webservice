@@ -9,7 +9,7 @@
 * Authentification des utilisateurs
 * Gestion des droits
 
---- Version 0.0.4 --- 
+--- Version 0.0.4 ---
 
 * Refactor for by logged user queries.
 

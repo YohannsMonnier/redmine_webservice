@@ -7,7 +7,7 @@ class ProjectDto < ActionWebService::Struct
   member :issue_edit_allowed, :boolean
   member :project_saved, :boolean
   member :new_project, :boolean
-  
+
   def self.create project
     ProjectDto.new(
       :id => project.id,
@@ -17,8 +17,8 @@ class ProjectDto < ActionWebService::Struct
       :issue_edit_allowed => User.current.allowed_to?(:edit_issues, project)
     )
   end
-  
-  def self.createAndReturn(project,boo_saved,boo_new) 
+
+  def self.createAndReturn(project,boo_saved,boo_new)
   	return ProjectDto.new(
       :id => project.id,
       :identifier => project.identifier,

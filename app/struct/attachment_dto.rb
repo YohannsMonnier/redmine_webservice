@@ -1,7 +1,7 @@
-# 
+#
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
- 
+
 #          <id xsi:type="xsd:int">1</id>
 #          <container_id xsi:type="xsd:int">6</container_id>
 #          <container_type xsi:type="xsd:string">Issue</container_type>
@@ -26,7 +26,7 @@ class AttachmentDto < ActionWebService::Struct
   member :digest, :string
   member :content_type, :string
   member :description, :string
-  
+
   def AttachmentDto.create attachment
     AttachmentDto.new(
       :id => attachment.id,

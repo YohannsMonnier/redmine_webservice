@@ -16,7 +16,7 @@ class ProjectBasedApi < ActionWebService::API::Base
   api_method :get_trackers_for_project,
     :expects => [:int],
     :returns => [[TrackerDto]]
-  
+
   api_method :get_issue_categorys_for_project,
     :expects => [:int],
     :returns => [[IssueCategoryDto]]
