@@ -3,13 +3,13 @@
 # Redmine Webservice - Yohann Monnier - Internethic  *
 #													*
 #****************************************************r.
- 
+
 class QueryStringDecoder < ActionController::UrlEncodedPairParser
   def initialize(query_string)
     super(find_pairs(query_string))
 #    @result = to_symbols(@result)
   end
-  
+
   def find_pairs(query_string)
     return {} if query_string.blank?
 
@@ -20,10 +20,10 @@ class QueryStringDecoder < ActionController::UrlEncodedPairParser
       value = value.nil? ? nil : CGI.unescape(value)
       [ CGI.unescape(key), value ]
     end.compact
-    
+
     return pairs
   end
-  
+
   def to_symbols hash
     hash.each {|key, value|
       hash.delete(key)
@@ -40,23 +40,23 @@ class QueryStringDecoder < ActionController::UrlEncodedPairParser
             end
           }
           hash.store(key.to_sym, value)
-          
+
       end
     }
     return hash
-    
+
   end
-  
+
   def project
     @project ||= Project.find(@result['project_id'])
     rescue
       nil
   end
-  
+
   def query
     @query ||= build_query
   end
-  
+
   def build_query
     query = Query.new(:name => "_")
     query.project = @project
@@ -67,6 +67,6 @@ class QueryStringDecoder < ActionController::UrlEncodedPairParser
     end
     return query
   end
-  
+
 end
 

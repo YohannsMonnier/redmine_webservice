@@ -8,7 +8,7 @@ class IssueStatusDto < ActionWebService::Struct
   member :name, :string
   member :is_closed, :bool
   member :is_default, :bool
-  
+
   def IssueStatusDto.create status
     IssueStatusDto.new(
       :id => status.id,

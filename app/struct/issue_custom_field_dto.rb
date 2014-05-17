@@ -11,7 +11,7 @@ class IssueCustomFieldDto < ActionWebService::Struct
   member :is_filter, :boolean
   member :possible_values, [:string]
   member :trackers, [:int]
-  
+
   def self.create field
     IssueCustomFieldDto.new(
       :id => field.id,

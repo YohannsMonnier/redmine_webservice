@@ -28,12 +28,12 @@ class IssueDto < ActionWebService::Struct
   member :all_journals, [JournalDto]
   member :all_attachments, [AttachmentDto]
   member :all_relations, [IssueRelationDto]
-  
+
   def self.create issue
     custom_values = issue.custom_values
     custom_values.collect! { |x| CustomValueDto.create(x)}
     custom_values.compact!
-    
+
     return IssueDto.new(
       :id => issue.id,
       :project_id => issue.project_id,

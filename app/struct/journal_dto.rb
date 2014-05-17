@@ -1,7 +1,7 @@
-# 
+#
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
- 
+
 
 class JournalDto < ActionWebService::Struct
 #          <id xsi:type="xsd:int">4</id>
@@ -18,7 +18,7 @@ class JournalDto < ActionWebService::Struct
   member :notes, :string
   member :created_on, :datetime
   member :editable_by_user, :boolean
-  
+
   def JournalDto.create journal
     if (journal.notes=='')
       return nil

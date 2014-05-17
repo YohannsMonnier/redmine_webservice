@@ -24,21 +24,21 @@ class ProjectBasedService < BaseService
   def get_trackers_for_project id
     tmp = @project.trackers.find(:all);
     trackers = Array.new(tmp.size)
-    tmp.each { |element| 
+    tmp.each { |element|
       trackers.push(TrackerDto.create(element))
     }
   end
-  
+
   def get_issue_custom_fields_for_project id
     custom_fields = @project.methods.include?('all_issue_custom_fields') ? @project.all_issue_custom_fields : @project.all_custom_fields;
     custom_fields.collect! { |x| IssueCustomFieldDto.create(x) }
     return custom_fields.compact
   end
-  
+
   def get_issue_categorys_for_project id
     tmp = @project.issue_categories
     categorys = Array.new(tmp.size)
-    tmp.each { |element| 
+    tmp.each { |element|
       categorys.push(IssueCategoryDto.create(element))
     }
   end
@@ -65,7 +65,7 @@ class ProjectBasedService < BaseService
     queries.collect!{|x|QueryDto.create(x)}
     return queries.compact
   end
-  
+
   def find_or_create_user(username, user_mail, project=nil, price_per_hour = nil , role_per_group = nil)
 		u = User.find_by_login(username)
 		if !u
@@ -88,7 +88,7 @@ class ProjectBasedService < BaseService
 			end
 		end
 		# Make sure he is a member of the project
-		if project 
+		if project
 				# assigning default role, if a role is defined then this role will be the one assigned
 				role = @@DEFAULT_ROLE
 				#if role_per_group

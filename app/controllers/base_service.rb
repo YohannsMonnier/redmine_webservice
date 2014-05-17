@@ -13,7 +13,7 @@ class BaseService < ActionWebService::Base
   def initialize
     super
     @@authorizemap = Hash.new(nil)
-    
+
     @@authorizemap[IssueService] = Hash.new(nil)
     @@authorizemap[IssueService][:find_ticket_by_id] = {:ctrl => :issues, :action => :show}
     @@authorizemap[IssueService][:find_allowed_statuses_for_issue] = {:ctrl => :issues, :action => :show}
@@ -23,7 +23,7 @@ class BaseService < ActionWebService::Base
     @@authorizemap[IssueService][:find_tickets_by_last_update] = {:ctrl => :issues, :action => :show}
     @@authorizemap[IssueService][:find_relations_for_issue] = {:ctrl => :issues, :action => :show}
     @@authorizemap[IssueService][:delete_ticket_for_project] = {:ctrl => :issues, :action => :show}
-    
+
     @@authorizemap[ProjectBasedService] = Hash.new(nil)
     @@authorizemap[ProjectBasedService][:get_trackers_for_project] = {:ctrl => :issues, :action => :index}
     @@authorizemap[ProjectBasedService][:get_issue_categorys_for_project] = {:ctrl => :issues, :action => :index}
@@ -31,7 +31,7 @@ class BaseService < ActionWebService::Base
     @@authorizemap[ProjectBasedService][:get_versions_for_project] = {:ctrl => :issues, :action => :index}
     @@authorizemap[ProjectBasedService][:get_statuses_for_project] = {:ctrl => :issues, :action => :index}
     @@authorizemap[ProjectBasedService][:get_issue_custom_fields_for_project] = {:ctrl => :issues, :action => :index}
-    @@authorizemap[ProjectBasedService][:get_queries_for_project] = {:ctrl => :issues, :action => :index}    
+    @@authorizemap[ProjectBasedService][:get_queries_for_project] = {:ctrl => :issues, :action => :index}
   end
 
   def find_project rpcname, args

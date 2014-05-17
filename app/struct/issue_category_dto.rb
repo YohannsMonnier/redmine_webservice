@@ -5,7 +5,7 @@ class IssueCategoryDto < ActionWebService::Struct
 #          <assigned_to_id xsi:nil="true"></assigned_to_id>
   member :id, :int
   member :name, :string
-  
+
   def IssueCategoryDto.create category
     IssueCategoryDto.new(
       :id => category.id,

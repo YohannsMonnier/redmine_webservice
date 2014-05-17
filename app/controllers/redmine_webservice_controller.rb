@@ -6,9 +6,9 @@
 
 class RedmineWebserviceController < ActionController::Base
   before_filter :authenticate
-  
+
   web_service_dispatching_mode :layered
-  
+
   web_service :Project, ProjectService.new
   web_service :Ticket, IssueService.new
   web_service :Information, InformationService.new
@@ -16,7 +16,7 @@ class RedmineWebserviceController < ActionController::Base
   web_service :Priority, PriorityService.new
   web_service :ProjectBased, ProjectBasedService.new
   web_service :Status, StatusService.new
-  
+
   def authenticate
     if params[:methodCall] && params[:methodCall][:methodName] && params[:methodCall][:methodName].include?('Information.')
       return true;

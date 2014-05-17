@@ -4,7 +4,7 @@ class IssueRelationDto < ActionWebService::Struct
   member :to, :int
   member :type, :string
   member :delay, :int
-  
+
   def IssueRelationDto.create relation
     IssueRelationDto.new(
       :id => relation.id,
